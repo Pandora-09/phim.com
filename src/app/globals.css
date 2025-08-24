@@ -1,0 +1,302 @@
+@import "tailwindcss";
+
+body {
+  background: #0f0f23 !important;
+  min-height: 100vh;
+  color: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-white {
+  background: #1a1a2e !important;
+  border: 1px solid #16213e !important;
+}
+
+.bg-gray-50 {
+  background: #0f0f23 !important;
+}
+
+.bg-gray-900 {
+  background: #0f0f23 !important;
+}
+
+.bg-gray-800 {
+  background: #1a1a2e !important;
+  border: 1px solid #16213e !important;
+}
+
+.bg-gray-700 {
+  background: #1a1a2e !important;
+  border: 1px solid #16213e !important;
+}
+
+.text-gray-900 {
+  color: #ffffff !important;
+}
+
+.text-gray-700 {
+  color: #cbd5e0 !important;
+}
+
+.text-gray-600 {
+  color: #a0aec0 !important;
+}
+
+.text-gray-500 {
+  color: #718096 !important;
+}
+
+.text-gray-300 {
+  color: #cbd5e0 !important;
+}
+
+.text-gray-200 {
+  color: #e2e8f0 !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+/* Glass Morphism Effects */
+.backdrop-blur-xl {
+  backdrop-filter: blur(24px) saturate(180%);
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px) saturate(150%);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(12px) saturate(120%);
+}
+
+/* Enhanced Glass Effects */
+.glass-header {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.glass-drawer {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.4);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.glass-menu-item {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-menu-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Animation Delays */
+.animation-delay-75 {
+  animation-delay: 75ms;
+}
+
+.animation-delay-150 {
+  animation-delay: 150ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.ant-card {
+  background: transparent !important;
+  border: none !important;
+}
+
+.ant-card-body {
+  padding: 0px !important;
+}
+
+/* Default Dark Theme */
+body {
+  background: #0a0a0a;
+  color: #ededed;
+}
+
+.bg-white {
+  background-color: #1f2937 !important;
+}
+
+.bg-gray-50 {
+  background-color: #111827 !important;
+}
+
+.text-gray-900 {
+  color: #f9fafb !important;
+}
+
+.text-gray-700 {
+  color: #d1d5db !important;
+}
+
+.text-gray-600 {
+  color: #9ca3af !important;
+}
+
+.text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Light Theme Override */
+.light body {
+  background: #ffffff;
+  color: #171717;
+}
+
+.light .bg-white {
+  background-color: #ffffff !important;
+}
+
+.light .bg-gray-50 {
+  background-color: #f9fafb !important;
+}
+
+.light .text-gray-900 {
+  color: #111827 !important;
+}
+
+.light .text-gray-700 {
+  color: #374151 !important;
+}
+
+.light .text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.light .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Ant Pagination Custom Styles */
+.ant-pagination-custom {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dark .ant-pagination-custom {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.dark .ant-pagination-custom .ant-pagination-item {
+  background: #374151;
+  border-color: #4b5563;
+}
+
+.dark .ant-pagination-custom .ant-pagination-item a {
+  color: #f9fafb;
+}
+
+.dark .ant-pagination-custom .ant-pagination-item-active {
+  background: transparent !important;
+  border-color: #3b82f6;
+}
+
+.dark .ant-pagination-custom .ant-pagination-prev,
+.dark .ant-pagination-custom .ant-pagination-next {
+  color: #f9fafb;
+}
+
+.dark .ant-pagination-custom .ant-pagination-jump-prev,
+.dark .ant-pagination-custom .ant-pagination-jump-next {
+  color: #f9fafb;
+}
+
+/* Ant Menu Dark Default */
+.ant-menu {
+  background: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+.ant-menu-item {
+  color: #939394 !important;
+}
+
+.ant-menu-item:hover {
+  color: #ffffff !important;
+}
+
+.ant-menu-item-selected {
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+.ant-menu-item a {
+  color: inherit !important;
+}
+
+.ant-menu-horizontal {
+  border-bottom: 1px solid #374151 !important;
+}
+
+/* Light Mode Menu */
+.light .ant-menu {
+  background: white !important;
+  color: #374151 !important;
+}
+
+.light .ant-menu-item {
+  color: #6b7280 !important;
+}
+
+.light .ant-menu-item:hover {
+  color: #142db8 !important;
+}
+
+.light .ant-menu-item-selected {
+  color: #14b8a6 !important;
+}
+
+.light .ant-menu-item a {
+  color: inherit !important;
+}
+
+.light .ant-menu-horizontal {
+  border-bottom: 1px solid #e5e7eb !important;
+}
+
+/* Related Movies Tabs */
+.related-movies-tabs .ant-tabs-tab {
+  color: #d1d5db !important;
+}
+
+.related-movies-tabs .ant-tabs-tab-active {
+  color: #3b82f6 !important;
+}
+
+.related-movies-tabs .ant-tabs-ink-bar {
+  background: transparent !important;
+}
+
+.light .related-movies-tabs .ant-tabs-tab {
+  color: #6b7280 !important;
+}
+
+.light .related-movies-tabs .ant-tabs-tab-active {
+  color: transparent !important;
+}
