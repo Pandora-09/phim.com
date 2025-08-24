@@ -85,7 +85,7 @@ export default async function MoviePage({ params }) {
   const { data } = movie;
 
   return (
-    <div className="min-h-screen bg-gray-900 light:bg-gray-50 transition-colors pt-20">
+    <div className="min-h-screen bg-gray-900 light:bg-gray-50 transition-colors">
       <div className="container mx-auto p-4">
         <SmartPlayer movie={data.item} />
 
