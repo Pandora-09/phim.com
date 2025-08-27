@@ -1,12 +1,18 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { searchMovies } from "../services/ophim";
+import SearchResults from "./SearchResults";
 
 export default function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isResultsVisible, setIsResultsVisible] = useState(false);
   const router = useRouter();
+  const searchRef = useRef(null);
 
   const menuItems = [
     { href: "/", label: "🏠 Trang Chủ" },
@@ -21,11 +27,49 @@ export default function Header() {
     { href: "/phim-chieu-rap", label: "🎭 Chiếu Rạp" },
   ];
 
+  useEffect(() => {
+    const handler = setTimeout(async () => {
+      if (searchQuery.trim().length > 2) {
+        setIsLoading(true);
+        setIsResultsVisible(true);
+        const results = await searchMovies(searchQuery.trim());
+        setSearchResults(results);
+        setIsLoading(false);
+      } else {
+        setSearchResults([]);
+        setIsResultsVisible(false);
+      }
+    }, 300); // Debounce time: 300ms
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchQuery]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setIsResultsVisible(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+      resetSearch();
     }
+  };
+
+  const resetSearch = () => {
+    setSearchQuery("");
+    setSearchResults([]);
+    setIsResultsVisible(false);
   };
 
   return (
@@ -62,15 +106,26 @@ export default function Header() {
             </Link>
 
             {/* Search */}
-            <form onSubmit={handleSearch} className="flex-1 max-w-md mx-4">
-              <input
-                type="text"
-                placeholder="Tìm kiếm phim..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 border border-white/20"
-              />
-            </form>
+            <div ref={searchRef} className="relative flex-1 max-w-md mx-4">
+              <form onSubmit={handleSearch}>
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm phim..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onFocus={() => searchQuery.trim().length > 2 && setIsResultsVisible(true)}
+                  className="w-full px-4 py-2 rounded-lg bg-white/10 backdrop-blur-md text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 border border-white/20"
+                  autoComplete="off"
+                />
+              </form>
+              {isResultsVisible && searchQuery.trim() && (
+                <SearchResults
+                  results={searchResults}
+                  isLoading={isLoading}
+                  onResultClick={resetSearch}
+                />
+              )}
+            </div>
           </div>
         </div>
       </header>
